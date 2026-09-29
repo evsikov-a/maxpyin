@@ -640,7 +640,7 @@ class UpdatePage:
         if not isinstance(data, Mapping):
             raise TypeError("Ожидалась страница обновлений.")
         raw = data.get("updates")
-        updates = ()
+        updates: tuple[Update, ...] = ()
         if isinstance(raw, list):
             updates = tuple(
                 Update.from_dict(item)
@@ -856,7 +856,7 @@ class ChatMemberPage:
         if not isinstance(data, Mapping):
             raise TypeError("Ожидался список участников.")
         raw = data.get("members")
-        members = ()
+        members: tuple[ChatMember, ...] = ()
         if isinstance(raw, list):
             members = tuple(
                 ChatMember.from_dict(item)
@@ -928,7 +928,7 @@ class MessagePage:
         if not isinstance(data, Mapping):
             raise TypeError("Ожидался список сообщений.")
         raw = data.get("messages")
-        messages = ()
+        messages: tuple[Message, ...] = ()
         if isinstance(raw, list):
             messages = tuple(
                 Message.from_dict(item)
@@ -973,7 +973,7 @@ class CommentPage:
         raw = data.get("comments")
         if not isinstance(raw, list):
             raw = data.get("messages")
-        comments = ()
+        comments: tuple[Message, ...] = ()
         if isinstance(raw, list):
             comments = tuple(
                 Message.from_dict(item)
@@ -1057,7 +1057,7 @@ class SubscriptionList:
         if not isinstance(data, Mapping):
             raise TypeError("Ожидался список подписок.")
         raw = data.get("subscriptions")
-        items = ()
+        items: tuple[Subscription, ...] = ()
         if isinstance(raw, list):
             items = tuple(
                 Subscription.from_dict(item)

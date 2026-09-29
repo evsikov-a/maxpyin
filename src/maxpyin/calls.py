@@ -112,6 +112,8 @@ def _chat_path(chat_id: int, suffix: str = "") -> str:
 def _command_payload(
     item: BotCommand | tuple[str, str] | Mapping[str, Any],
 ) -> dict[str, str]:
+    name: object
+    description: object
     if isinstance(item, BotCommand):
         name, description = item.name, item.description
     elif isinstance(item, tuple) and len(item) == 2:
